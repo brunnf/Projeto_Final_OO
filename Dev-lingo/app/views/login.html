@@ -12,8 +12,12 @@
         <div class="login-container">
             <a href="/" class="logo">BITLINGO</a>
             <h2>Acesse sua conta</h2>
+            
+            <% if error: %>
+                <p class="error-message">${error}</p>
+            <% end %>
 
-            <form>
+            <form method="POST">
                 <div class="input-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>

@@ -1,50 +1,126 @@
-# Importando as funções necessárias do Bottle
-from bottle import Bottle, run, static_file, template
+from bottle import Bottle, run, static_file, request, redirect
+from functools import wraps
+from app.controllers.application_controller import ApplicationController
 
-# Cria a instância da aplicação
 app = Bottle()
+ctl = ApplicationController()
 
-#-----------------------------------------------------------------------------
-# Rota para servir arquivos estáticos (CSS, JS, Imagens)
-# Esta rota é essencial para que o CSS e o JS funcionem.
+app.config['bottle.secret'] = 'uma-chave-muito-secreta-e-dificil-de-adivinhar-12345'
+
+# --- DECORATOR: O PROTETOR DAS ROTAS DE ADMIN ---
+def admin_required(fn):
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        user_session = request.get_cookie("session", secret=app.config['bottle.secret'])
+        if user_session and user_session.get("role") == "admin":
+            return fn(*args, **kwargs)
+        return redirect("/login") # Retornar o redirect para garantir a execução
+    return wrapper
+
+# --- Rota Estática ---
 @app.route('/static/<filepath:path>')
 def serve_static(filepath):
-    # O root aponta para a pasta 'app/static' a partir de onde o script é executado
     return static_file(filepath, root='./app/static')
 
-
-#-----------------------------------------------------------------------------
-# Rotas para cada uma das nossas páginas (Views)
-
+# --- Rotas Públicas ---
 @app.route('/')
-def index():
-    """ Rota para a página inicial (homepage). """
-    return template('app/views/index.html')
-
-@app.route('/login')
-def login():
-    """ Rota para a página de login. """
-    return template('app/views/login.html')
-
-@app.route('/cadastro')
-def cadastro():
-    """ Rota para a página de cadastro. """
-    return template('app/views/cadastro.html')
+def index_route(): return ctl.index()
+    
+@app.route('/trilha/python')
+def trilha_python_route(): return ctl.trilha_python()
 
 @app.route('/cursos')
-def cursos():
-    """ Rota para a página de seleção de cursos. """
-    return template('app/views/cursos.html')
+def cursos_route(): return ctl.cursos()
 
-@app.route('/trilha/python')
-def trilha_python():
-    """ Rota para a trilha de aprendizado de Python. """
-    return template('app/views/trilha-python.html')
+@app.route('/cadastro')
+def cadastro_route(): return ctl.cadastro()
 
+@app.route('/em-construcao')
+def em_construcao_route():
+    return ctl.em_construcao()
 
-#-----------------------------------------------------------------------------
-# Bloco para iniciar o servidor
+# --- ROTAS INTERATIVAS (AULAS E QUESTÕES) ADICIONADAS AQUI ---
 
+@app.route('/aula/<aula_id:int>')
+def ver_aula_route(aula_id):
+    # No futuro, aqui podemos adicionar um @login_required para alunos
+    return ctl.ver_aula(aula_id)
+
+@app.route('/questao/<questao_id:int>')
+def ver_questao_route(questao_id):
+    # No futuro, aqui podemos adicionar um @login_required para alunos
+    return ctl.ver_questao(questao_id)
+
+@app.route('/questao/<questao_id:int>/verificar', method='POST')
+def verificar_resposta_route(questao_id):
+    return ctl.verificar_resposta(questao_id)
+
+# --- FIM DAS NOVAS ROTAS ---
+
+# --- Rotas de Autenticação ---
+@app.route('/login', method=['GET', 'POST'])
+def login_route():
+    if request.method == 'POST':
+        return ctl.handle_login()
+    return ctl.login()
+
+@app.route('/logout')
+def logout_route():
+    return ctl.logout()
+
+# --- Rotas do Admin (Protegidas) ---
+@app.route('/admin/trilha')
+@admin_required
+def admin_trilha_route():
+    return ctl.admin_trilha_index()
+
+@app.route('/admin/modulo/<mod_id:int>/aula/apagar/<aula_id:int>')
+@admin_required
+def apagar_aula_route(mod_id, aula_id):
+    return ctl.apagar_aula(mod_id, aula_id)
+
+@app.route('/admin/modulo/<mod_id:int>/questao/apagar/<questao_id:int>')
+@admin_required
+def apagar_questao_route(mod_id, questao_id):
+    return ctl.apagar_questao(mod_id, questao_id)
+    
+@app.route('/admin/modulo/novo', method=['GET', 'POST'])
+@admin_required
+def criar_modulo_route():
+    return ctl.gerenciar_modulo()
+
+@app.route('/admin/modulo/editar/<mod_id:int>', method=['GET', 'POST'])
+@admin_required
+def editar_modulo_route(mod_id):
+    return ctl.gerenciar_modulo(mod_id)
+
+@app.route('/admin/modulo/apagar/<mod_id:int>')
+@admin_required
+def apagar_modulo_route(mod_id):
+    return ctl.apagar_modulo(mod_id)
+
+@app.route('/admin/modulo/<mod_id:int>/aula/novo', method=['GET', 'POST'])
+@admin_required
+def criar_aula_route(mod_id):
+    return ctl.gerenciar_aula(mod_id)
+
+@app.route('/admin/modulo/<mod_id:int>/questao/nova', method=['GET', 'POST'])
+@admin_required
+def criar_questao_route(mod_id):
+    return ctl.gerenciar_questao(mod_id)
+
+# --- ROTAS NOVAS: Edição de Aulas e Questões ---
+
+@app.route('/admin/modulo/<mod_id:int>/aula/editar/<aula_id:int>', method=['GET', 'POST'])
+@admin_required
+def editar_aula_route(mod_id, aula_id):
+    return ctl.gerenciar_aula(mod_id, aula_id)
+
+@app.route('/admin/modulo/<mod_id:int>/questao/editar/<questao_id:int>', method=['GET', 'POST'])
+@admin_required
+def editar_questao_route(mod_id, questao_id):
+    return ctl.gerenciar_questao(mod_id, questao_id)
+
+# --- Iniciar Servidor ---
 if __name__ == '__main__':
-    # Roda a aplicação. O debug=True ajuda a ver os erros e recarrega o servidor automaticamente.
     run(app, host='0.0.0.0', port=8080, debug=True, reloader=True)

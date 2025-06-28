@@ -2,12 +2,10 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trilha Python - BITLINGO</title>
     <link rel="stylesheet" href="/static/css/trilha.css">
 </head>
 <body>
-
     <header class="track-header">
         <a href="/cursos" class="back-button">← Voltar para Cursos</a>
         <h1>Trilha de Python</h1>
@@ -20,50 +18,39 @@
     </header>
 
     <main class="track-path">
-        <div class="path-node module completed">
-            <span class="icon">📖</span>
-            <div class="node-info">
-                <strong>Módulo 1</strong>
-                <span>Variáveis e Tipos</span>
+        <% for modulo in trilha: %>
+            <div class="path-node module unlocked">
+                <span class="icon">📖</span>
+                <div class="node-info">
+                    <strong>{{modulo['titulo']}}</strong>
+                </div>
             </div>
-        </div>
-        <div class="path-connector"></div>
-        <div class="question-group">
-            <a href="#" class="path-node question completed"><span class="icon">✅</span><span>Q1</span></a>
-            <a href="#" class="path-node question completed"><span class="icon">✅</span><span>Q2</span></a>
-            <a href="#" class="path-node question completed"><span class="icon">✅</span><span>Desafio</span></a>
-        </div>
-        <div class="path-connector"></div>
-
-        <div class="path-node module unlocked">
-            <span class="icon">🎯</span>
-            <div class="node-info">
-                <strong>Módulo 2</strong>
-                <span>Operadores</span>
+            <div class="path-connector"></div>
+            
+            <% if modulo['aulas']: %>
+            <div class="question-group">
+                <% for aula in modulo['aulas']: %>
+                    <a href="/aula/{{aula['id']}}" class="path-node question unlocked">
+                        <span class="icon">📄</span>
+                        <span>Aula {{modulo['aulas'].index(aula) + 1}}</span>
+                    </a>
+                <% end %>
             </div>
-        </div>
-        <div class="path-connector"></div>
-        <div class="question-group">
-            <a href="#" class="path-node question completed"><span class="icon">✅</span><span>Q1</span></a>
-            <a href="#" class="path-node question unlocked"><span class="icon">▶️</span><span>Q2</span></a>
-            <a href="#" class="path-node question locked"><span class="icon">🔒</span><span>Desafio</span></a>
-        </div>
-        <div class="path-connector"></div>
-
-        <div class="path-node module locked">
-            <span class="icon">🔒</span>
-            <div class="node-info">
-                <strong>Módulo 3</strong>
-                <span>Estruturas Condicionais</span>
+            <div class="path-connector"></div>
+            <% end %>
+            
+            <% if modulo['questoes']: %>
+            <div class="question-group">
+                <% for questao in modulo['questoes']: %>
+                    <a href="/questao/{{questao['id']}}" class="path-node question unlocked">
+                        <span class="icon">🧠</span>
+                        <span>Questão {{modulo['questoes'].index(questao) + 1}}</span>
+                    </a>
+                <% end %>
             </div>
-        </div>
-        <div class="path-connector"></div>
-         <div class="question-group">
-            <a href="#" class="path-node question locked"><span class="icon">🔒</span><span>Q1</span></a>
-            <a href="#" class="path-node question locked"><span class="icon">🔒</span><span>Q2</span></a>
-            <a href="#" class="path-node question locked"><span class="icon">🔒</span><span>Desafio</span></a>
-        </div>
+            <div class="path-connector"></div>
+            <% end %>
+        <% end %>
     </main>
-
 </body>
 </html>

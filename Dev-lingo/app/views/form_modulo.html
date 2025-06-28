@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciar Módulo - BITLINGO</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gerenciar Módulo: {{modulo.get('titulo', 'Novo Módulo')}}</h1>
+
+        <form method="POST">
+            <h3>Dados do Módulo</h3>
+            <div class="form-group">
+                <label for="titulo">Título do Módulo</label>
+                <input type="text" id="titulo" name="titulo" value="{{modulo.get('titulo', '')}}" required>
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" name="descricao" rows="4" required>{{modulo.get('descricao', '')}}</textarea>
+            </div>
+            <div class="form-actions">
+                <a href="/admin/trilha" class="btn btn-cancel">Voltar</a>
+                <button type="submit" class="btn btn-create">Salvar Alterações do Módulo</button>
+            </div>
+        </form>
+
+        <div class="sub-list-manager">
+            <h3>Aulas neste Módulo</h3>
+            <% for aula in modulo.get('aulas', []): %>
+                <div class="sub-item">
+                    <span>{{aula['titulo']}}</span>
+                    <div class="actions">
+                        <a href="/admin/modulo/{{modulo['id']}}/aula/editar/{{aula['id']}}" class="btn btn-edit btn-small">Editar</a>
+                        <a href="/admin/modulo/{{modulo['id']}}/aula/apagar/{{aula['id']}}" class="btn btn-delete btn-small" onclick="return confirm('Apagar esta aula?')">Apagar</a>
+                    </div>
+                </div>
+            <% end %>
+            <a href="/admin/modulo/{{modulo['id']}}/aula/novo" class="btn btn-add">+ Adicionar Nova Aula</a>
+        </div>
+
+        <div class="sub-list-manager">
+            <h3>Questões neste Módulo</h3>
+            <% for questao in modulo.get('questoes', []): %>
+            <div class="sub-item">
+                <span>{{questao['enunciado']}}</span>
+                <div class="actions">
+                    <a href="/admin/modulo/{{modulo['id']}}/questao/editar/{{questao['id']}}" class="btn btn-edit btn-small">Editar</a>
+                    <a href="/admin/modulo/{{modulo['id']}}/questao/apagar/{{questao['id']}}" class="btn btn-delete btn-small" onclick="return confirm('Apagar esta questão?')">Apagar</a>
+                </div>
+            </div>
+            <% end %>
+            <a href="/admin/modulo/{{modulo['id']}}/questao/nova" class="btn btn-add">+ Adicionar Nova Questão</a>
+        </div>
+    
+</body>
+</html>

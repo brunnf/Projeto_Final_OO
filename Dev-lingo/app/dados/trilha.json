@@ -1,0 +1,31 @@
+{
+    "proximo_id_modulo": 3,
+    "proximo_id_aula": 103,
+    "proximo_id_questao": 203,
+    "modulos": [
+        {
+            "id": 1,
+            "titulo": "Módulo 1: Variáveis e Tipos",
+            "descricao": "Conceitos fundamentais de variáveis e tipos de dados em Python.",
+            "aulas": [
+                {
+                    "id": 101,
+                    "titulo": "Variáveis e Tipos",
+                    "conteudo": "<h3>O que é uma Variável?</h3>\r\n<p>\r\n    Imagine que você precisa guardar uma informação para usar depois, como o nome de um usuário ou a pontuação em um jogo. Em programação, usamos <strong>variáveis</strong> para isso. Pense em uma variável como uma <strong>caixa com uma etiqueta</strong>. Você coloca uma informação dentro da caixa e usa a etiqueta (o nome da variável) para encontrá-la sempre que precisar.\r\n</p>\r\n<p>\r\n    Em Python, criar uma variável é extremamente simples. Você só precisa escolher um nome, usar o sinal de igual (<code>=</code>) e colocar o valor que deseja guardar.\r\n</p>\r\n\r\n<pre><code class=\"language-python\"><span class=\"code-comment\"># Criamos uma variável chamada 'nome_do_jogador' e guardamos o texto \"Beatriz\" nela.</span>\r\n<span class=\"code-variable\">nome_do_jogador</span> = <span class=\"code-string\">\"Beatriz\"</span>\r\n\r\n<span class=\"code-comment\"># Criamos outra variável para guardar a pontuação.</span>\r\n<span class=\"code-variable\">pontuacao</span> = <span class=\"code-number\">1500</span>\r\n\r\n<span class=\"code-comment\"># Agora, podemos usar essas variáveis para mostrar uma mensagem.</span>\r\n<span class=\"code-keyword\">print</span>(<span class=\"code-string\">\"A jogadora\"</span>, nome_do_jogador, <span class=\"code-string\">\"tem\"</span>, pontuacao, <span class=\"code-string\">\"pontos!\"</span>)</code></pre>\r\n\r\n<h3>Principais Tipos de Dados</h3>\r\n<p>\r\n    Quando você guarda algo em uma variável, o Python automaticamente entende o \"tipo\" daquela informação. Os tipos mais básicos e essenciais que você usará o tempo todo são:\r\n</p>\r\n\r\n<h4>1. String (<code>str</code>) - Texto</h4>\r\n<p>\r\n    Qualquer sequência de caracteres (letras, números, símbolos) é uma string. Para criá-la, basta colocar o texto entre aspas simples (<code>'</code>) ou duplas (<code>\"</code>).\r\n</p>\r\n<pre><code class=\"language-python\"><span class=\"code-variable\">linguagem</span> = <span class=\"code-string\">\"Python\"</span>\r\n<span class=\"code-variable\">mensagem</span> = <span class=\"code-string\">'Bem-vindo ao BITLINGO!'</span></code></pre>\r\n\r\n<h4>2. Integer (<code>int</code>) - Números Inteiros</h4>\r\n<p>\r\n    São números inteiros, positivos ou negativos, sem nenhuma parte decimal.\r\n</p>\r\n<pre><code class=\"language-python\"><span class=\"code-variable\">idade</span> = <span class=\"code-number\">28</span>\r\n<span class=\"code-variable\">temperatura_negativa</span> = <span class=\"code-number\">-10</span></code></pre>\r\n\r\n<h4>3. Float (<code>float</code>) - Números de Ponto Flutuante</h4>\r\n<p>\r\n    São números que possuem uma parte decimal. Note que usamos o ponto (<code>.</code>) em vez da vírgula.\r\n</p>\r\n<pre><code class=\"language-python\"><span class=\"code-variable\">altura</span> = <span class=\"code-number\">1.82</span>\r\n<span class=\"code-variable\">preco</span> = <span class=\"code-number\">49.99</span></code></pre>\r\n\r\n<h4>4. Boolean (<code>bool</code>) - Lógico</h4>\r\n<p>\r\n    Este é um tipo muito especial que só pode ter dois valores: <code>True</code> (Verdadeiro) ou <code>False</code> (Falso). Ele é a base para toda a lógica de tomada de decisões em um programa. Note que a primeira letra é sempre maiúscula.\r\n</p>\r\n<pre><code class=\"language-python\"><span class=\"code-variable\">tem_chave</span> = <span class=\"code-keyword\">True</span>\r\n<span class=\"code-variable\">jogo_terminado</span> = <span class=\"code-keyword\">False</span></code></pre>\r\n\r\n<div class=\"key-concept\">\r\n    <p><strong>Dica de Mestre: A Mágica do Python!</strong></p>\r\n    <p>Diferente de muitas outras linguagens, em Python você não precisa declarar o tipo de uma variável. Ele é uma linguagem de <strong>tipagem dinâmica</strong>, o que significa que ele descobre o tipo sozinho! Você pode verificar o tipo de qualquer variável com a função <code>type()</code>.</p>\r\n    <pre><code class=\"language-python\"><span class=\"code-variable\">x</span> = <span class=\"code-number\">10</span>\r\n<span class=\"code-variable\">y</span> = <span class=\"code-string\">\"Olá\"</span>\r\n\r\n<span class=\"code-keyword\">print</span>(<span class=\"code-keyword\">type</span>(x))  <span class=\"code-comment\"># O que será que aparece aqui? Saída: &lt;class 'int'&gt;</span>\r\n<span class=\"code-keyword\">print</span>(<span class=\"code-keyword\">type</span>(y))  <span class=\"code-comment\"># E aqui? Saída: &lt;class 'str'&gt;</span></code></pre>\r\n</div>\r\n\r\n<h3>Resumo da Aula</h3>\r\n<p>\r\n    Parabéns! Você aprendeu os conceitos mais importantes da programação. Agora você sabe que:\r\n</p>\r\n<ul>\r\n    <li><strong>Variáveis</strong> são como caixas com etiquetas para guardar dados.</li>\r\n    <li>Os 4 tipos principais são <strong>string</strong> (texto), <strong>integer</strong> (inteiro), <strong>float</strong> (decimal) e <strong>boolean</strong> (verdadeiro/falso).</li>\r\n    <li>Python é <strong>dinamicamente tipado</strong> e a função <code>type()</code> pode nos dizer o tipo de qualquer variável.</li>\r\n</ul>"
+                }
+            ],
+            "questoes": [
+                {
+                    "id": 201,
+                    "enunciado": "Qual a sintaxe correta para declarar uma variável em Python?",
+                    "opcoes": [
+                        "var x = 5",
+                        "x = 5",
+                        "int x = 5"
+                    ],
+                    "resposta_correta": "x = 5"
+                }
+            ]
+        }
+    ]
+}

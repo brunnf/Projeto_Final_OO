@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Aula</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Adicionar Nova Aula ao "{{modulo['titulo']}}"</h1>
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="titulo">Título da Aula</label>
+                <input type="text" id="titulo" name="titulo" required>
+            </div>
+            <div class="form-group">
+                <label for="conteudo">Conteúdo da Aula (aceita HTML)</label>
+                <textarea id="conteudo" name="conteudo" rows="10" required></textarea>
+            </div>
+            <div class="form-actions">
+                <a href="/admin/trilha" class="btn btn-cancel">Cancelar</a>
+                <button type="submit" class="btn btn-create">Salvar Aula</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

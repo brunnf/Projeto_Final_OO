@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Questão - BITLINGO</title>
+    <link rel="stylesheet" href="/static/css/aula.css"> </head>
+<body>
+    <header class="lesson-header">
+        <div class="container">
+            <a href="/trilha/python" class="back-link">← Voltar para a Trilha</a>
+            <span class="module-title">{{modulo['titulo']}}</span>
+            <h1>Resolva a Questão:</h1>
+        </div>
+    </header>
+
+    <main class="lesson-content">
+        <div class="container">
+            <div class="question-box">
+                <p class="enunciado">{{questao['enunciado']}}</p>
+                
+                <form action="/questao/{{questao['id']}}/verificar" method="POST">
+                    <div class="options-list">
+                        <% for opcao in questao['opcoes']: %>
+                        <label class="option-item">
+                            <input type="radio" name="opcao" value="{{opcao}}" required>
+                            <code>{{opcao}}</code>
+                        </label>
+                        <% end %>
+                    </div>
+                    <button type="submit" class="btn-next">Responder</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
