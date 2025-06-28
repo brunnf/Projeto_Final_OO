@@ -1,7 +1,7 @@
-/* Importando uma fonte moderna do Google Fonts */
+/* Importa uma fonte do Google Fonts para o site */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
-/* ----- Configurações Globais e Variáveis de Cor ----- */
+/*Cores e Configurações Básicas do Site*/
 :root {
     --cor-fundo: #0D1117;
     --cor-primaria: #161B22;
@@ -9,7 +9,7 @@
     --cor-texto: #E2E8F0;
     --cor-texto-escuro: #0D1117;
 }
-
+/*Reseta margens e paddings de todos os elementos*/
 * {
     margin: 0;
     padding: 0;
@@ -22,19 +22,19 @@ body {
     color: var(--cor-texto);
     line-height: 1.6;
 }
-
+/* Centraliza e limita a largura do conteúdo*/
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* ----- Cabeçalho (Header) ----- */
+/*Cabeçalho*/
 .site-header {
     background-color: var(--cor-primaria);
     padding: 1rem 0;
     border-bottom: 1px solid #30363d;
-    position: relative; /* Essencial para posicionar o menu dropdown */
+    position: relative; /*posicionar o menu dropdown*/
 }
 
 .site-header .container {
@@ -48,9 +48,9 @@ body {
     color: var(--cor-acento);
 }
 
-/* ----- O MENU DE NAVEGAÇÃO AGORA É UM DROPDOWN ----- */
+/*menu de navegação (Dropdown)*/
 .main-nav {
-    /* Posicionamento para o dropdown */
+    /* Posição e tamanho do menu quando aparece */
     position: absolute;
     top: 100%; /* Começa logo abaixo do cabeçalho */
     left: 0;
@@ -58,20 +58,20 @@ body {
     background-color: var(--cor-primaria);
     border-bottom: 1px solid #30363d;
     
-    /* Aparência dos links */
+    /* Organiza links em coluna no menu */
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1rem 0;
 
-    /* Lógica para esconder/mostrar */
+    /* Esconde o menu por padrão*/
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px); /* Efeito de deslizar para cima/baixo */
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
-/* ESTILO DO MENU QUANDO ATIVO (VISÍVEL) */
+/* Mostra o menu quando a classe 'active' é adicionada */
 .main-nav.active {
     opacity: 1;
     visibility: visible;
@@ -86,7 +86,7 @@ body {
 }
 
 .main-nav ul li {
-    margin: 1rem 0; /* Espaçamento vertical entre os links */
+    margin: 1rem 0; /* Espaçamento entre os links */
 }
 
 .main-nav ul li a {
@@ -100,13 +100,13 @@ body {
     color: var(--cor-acento);
 }
 
-/* ÁREA DE AÇÕES (LOGIN + HAMBÚRGUER) */
+/* Área de login e botão de hambúrguer */
 .actions-area {
-    margin-left: auto; /* Empurra esta div para a extrema direita */
+    margin-left: auto; /* Joga para a direita */
     display: flex;
     align-items: center;
 }
-
+/* Estilo do botão de login */
 .login-button {
     text-decoration: none;
     color: var(--cor-acento);
@@ -133,7 +133,7 @@ body {
     cursor: pointer;
     padding: 0;
     margin-left: 20px;
-    z-index: 10; /* Garante que o botão fique sobre o menu */
+    z-index: 10; /* Fica por cima do menu */
 }
 
 .hamburger-menu .bar {
@@ -143,13 +143,13 @@ body {
     border-radius: 10px;
     transition: all 0.3s linear;
 }
-
+/* Animação do hambúrguer para 'X' quando ativo */
 .hamburger-menu.active .bar:nth-child(1) { transform: rotate(45deg) translate(0.65rem, 0.65rem); }
 .hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
 .hamburger-menu.active .bar:nth-child(3) { transform: rotate(-45deg) translate(0.65rem, -0.65rem); }
 
 
-/* ----- Seções Hero, About e Rodapé (sem alterações) ----- */
+/*Seções Hero, About e Rodapé*/
 .hero { height: 80vh; display: flex; justify-content: center; align-items: center; text-align: center; }
 .hero-content h2 { font-size: 4rem; font-weight: 900; line-height: 1.2; margin-bottom: 2rem; color: #FFFFFF; min-height: 160px; }
 #typing-effect::after { content: '|'; margin-left: 5px; opacity: 1; animation: blink 0.7s infinite; }

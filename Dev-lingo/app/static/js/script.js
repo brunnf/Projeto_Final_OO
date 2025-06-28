@@ -1,7 +1,7 @@
-// Espera todo o conteúdo da página carregar antes de executar o script
+//Espera o HTML carregar antes de rodar o script
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Funcionalidade 1: Efeito de Digitação (sem alterações) ---
+    //Efeito de Digitação
     const typingElement = document.getElementById('typing-effect');
     const textToType = "BITLINGO uma nova linguagem, agora.";
     let index = 0;
@@ -13,22 +13,21 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(type, 80);
         }
     }
+    //Inicia o efeito se o elemento existir
     if (typingElement) {
         type();
     }
 
 
-    // --- Funcionalidade do Menu Dropdown ---
+    //Menu Dropdown 
     const hamburger = document.querySelector('.hamburger-menu');
-    // Reintroduzimos esta linha para podermos controlar o menu
+    //Controlar o menu
     const navMenu = document.querySelector('.main-nav');
 
+    // Ao clicar no ícone do hamburguer
     hamburger.addEventListener('click', () => {
-        // Alterna a classe 'active' no botão para animar para 'X'
+        // Alterna a classe 'active' para animar o ícone e mostrar/esconder o menu
         hamburger.classList.toggle('active');
-
-        // ESTA É A LINHA CHAVE:
-        // Alterna a classe 'active' no menu para mostrá-lo ou escondê-lo
         navMenu.classList.toggle('active');
     });
 

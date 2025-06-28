@@ -1,7 +1,7 @@
-/* Importando a mesma fonte para manter a consistência */
+/* Importando a mesma fonte */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
-/* ----- Configurações Globais e Variáveis de Cor ----- */
+/* Cores do Tema do Login */
 :root {
     --cor-fundo: #0D1117;
     --cor-primaria: #161B22;
@@ -18,7 +18,7 @@ body {
     color: var(--cor-texto);
 }
 
-/* Container principal que centraliza tudo na tela */
+/*centraliza tudo na tela*/
 .main-login {
     min-height: 100vh;
     display: flex;
@@ -27,7 +27,7 @@ body {
     padding: 20px;
 }
 
-/* A "caixa" do formulário */
+/* Container do formulário de login */
 .login-container {
     background-color: var(--cor-primaria);
     padding: 2.5rem;
@@ -48,7 +48,7 @@ body {
     color: var(--cor-acento);
     margin-bottom: 0.5rem;
 }
-
+/* Título "Login"*/
 .login-container h2 {
     font-size: 1.5rem;
     margin-bottom: 2rem;
@@ -56,7 +56,7 @@ body {
     font-weight: 400;
 }
 
-/* Estilo para os campos de input */
+/* Estilo para os campos de input, label + input */
 .input-group { width: 100%; margin-bottom: 1.5rem; }
 .input-group label { display: block; margin-bottom: 0.5rem; font-weight: 700; font-size: 0.9rem; }
 .input-group input {
@@ -67,19 +67,20 @@ body {
     border-radius: 6px;
     color: var(--cor-texto);
     font-size: 1rem;
-    outline: none;
+    outline: none; /* Remove borda ao focar */
     transition: border-color 0.3s ease;
 }
+/* Efeito de foco no input */
 .input-group input:focus { border-color: var(--cor-acento); }
 
-/* Grupo de opções (Login) */
+/* Opções "Lembrar de mim" e "Esqueceu a senha?" */
 .options-group { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; margin-bottom: 1.5rem; }
 .remember-me { display: flex; align-items: center; }
 .remember-me input { margin-right: 0.5rem; }
 .forgot-password { color: var(--cor-acento); text-decoration: none; transition: text-decoration 0.3s ease; }
 .forgot-password:hover { text-decoration: underline; }
 
-/* Botão de Submit (AGORA GENÉRICO) */
+/* Botão de Login */
 .btn-submit {
     width: 100%;
     padding: 0.8rem;
@@ -92,13 +93,13 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
+/* Efeito no botão de login ao passar o mouse */
 .btn-submit:hover {
     background-color: #67cff7;
     transform: scale(1.02);
 }
 
-/* Link inferior */
+/* Link para cadastro */
 .signup-link { margin-top: 2rem; font-size: 0.9rem; }
 .signup-link a { color: var(--cor-acento); text-decoration: none; font-weight: 700; }
 .signup-link a:hover { text-decoration: underline; }

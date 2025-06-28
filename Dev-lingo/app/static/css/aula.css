@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
 
-/* ----- Variáveis de Cor (do tema principal) ----- */
+/*Cores do Tema da Aula/Questão */
 :root {
     --cor-fundo: #0D1117;
     --cor-primaria: #161B22;
@@ -28,13 +28,14 @@ body {
     padding: 0 1rem;
 }
 
-/* ----- Cabeçalho da Aula/Questão ----- */
+/* Cabeçalho da Aula/Questão*/
 .lesson-header {
     background-color: var(--cor-primaria);
     padding: 2rem 0;
     border-bottom: 1px solid #30363d;
     margin-bottom: 3rem;
 }
+/* Link de voltar ao módulo */
 .lesson-header .back-link {
     color: var(--cor-texto-secundario);
     text-decoration: none;
@@ -49,16 +50,18 @@ body {
     color: var(--cor-acento);
     font-weight: bold;
 }
+/* Título da aula/questão */
 .lesson-header h1 {
     font-size: 2.5rem;
     margin-top: 0.5rem;
     color: #fff;
 }
 
-/* ----- Conteúdo da Aula ----- */
+/*Conteúdo da Aula*/
 .lesson-content {
     padding-bottom: 4rem;
 }
+/* Subtítulos de seção */
 .lesson-content h3 {
     font-size: 1.8rem;
     color: var(--cor-acento);
@@ -67,17 +70,19 @@ body {
     border-bottom: 1px solid #30363d;
     padding-bottom: 0.5rem;
 }
+/* Subtítulos menores */
 .lesson-content h4 {
     font-size: 1.4rem;
     color: #fff;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
 }
+/* Parágrafos de texto */
 .lesson-content p {
     margin-bottom: 1rem;
     font-size: 1.1rem;
 }
-/* Estilo para `<code>` dentro de parágrafos */
+/* Código inline dentro de parágrafos */
 .lesson-content p code {
     background-color: rgba(56, 189, 248, 0.1);
     color: var(--cor-acento);
@@ -86,20 +91,20 @@ body {
     font-family: 'Fira Code', monospace;
 }
 
-/* ----- Bloco de Código Principal ----- */
+/* Bloco de Código Principal */
 .lesson-content pre {
     background-color: var(--cor-codigo-fundo);
     border: 1px solid #30363d;
     border-radius: 8px;
     padding: 1.5rem;
-    overflow-x: auto; /* Mantém a rolagem horizontal caso uma linha seja MUITO longa */
+    overflow-x: auto; /* Rolagem horizontal se o código for muito longo */
     margin: 1.5rem 0;
     font-family: 'Fira Code', monospace;
     font-size: 0.95rem;
 
-    /* --- CORREÇÃO APLICADA AQUI --- */
-    white-space: pre-wrap;   /* Quebra as linhas, preservando os espaços e quebras de linha */
-    word-break: break-word;  /* Força a quebra de palavras muito longas */
+    
+    white-space: pre-wrap;    /* Quebra linhas longas */
+    word-break: break-word;  /* Quebra palavras longas */
 }
 
 .lesson-content pre code {
@@ -115,7 +120,7 @@ body {
 .code-number { color: #b5cea8; }
 .code-variable { color: #9cdcfe; }
 
-/* Bloco de Destaque "Dica de Mestre" */
+/* Bloco de Destaque */
 .key-concept {
     background-color: rgba(56, 189, 248, 0.05);
     border-left: 4px solid var(--cor-acento);
@@ -127,7 +132,7 @@ body {
     color: var(--cor-acento);
 }
 
-/* --- Estilos para a Página de Questão --- */
+/*Estilos para a Página de Questão */
 .question-box {
     background-color: var(--cor-primaria);
     padding: 2rem;
@@ -197,7 +202,7 @@ body {
 .btn-next:hover span {
     transform: translateX(5px);
 }
-
+/* Estilos da página "Em Construção" */
 .construction-page {
     display: flex;
     flex-direction: column;
@@ -208,12 +213,12 @@ body {
 }
 
 .construction-icon {
-    font-size: 5rem; /* Ícone bem grande */
+    font-size: 5rem; /* Ícone grande */
     margin-bottom: 1.5rem;
-    animation: bounce 2s infinite;
+    animation: bounce 2s infinite; /* Animação do ícone */
 }
 
-/* Animação simples para o ícone */
+/* Animação de "pular" para o ícone */
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);

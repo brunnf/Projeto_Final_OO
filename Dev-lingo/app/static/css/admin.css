@@ -1,7 +1,7 @@
-/* Importando a fonte padrão */
+/* Importando a fonte principal */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
-/* ----- Variáveis de Cor (do tema principal) ----- */
+/* Cores do Tema Admin */
 :root {
     --cor-fundo: #0D1117;
     --cor-primaria: #161B22;
@@ -12,7 +12,7 @@
     --cor-texto-escuro: #0D1117;
 }
 
-/* ----- Estilos Gerais ----- */
+/*  Estilos Gerais */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--cor-fundo);
@@ -33,7 +33,7 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
-/* ----- Cabeçalho do Painel ----- */
+/*Cabeçalho do Painel*/
 .page-header {
     display: flex;
     justify-content: space-between;
@@ -45,7 +45,7 @@ h1, h2 {
     border: none;
 }
 
-/* ----- Botões ----- */
+/* Botões*/
 .btn {
     text-decoration: none;
     color: white;
@@ -63,7 +63,7 @@ h1, h2 {
 .btn-logout { background-color: #64748b; }
 .btn:hover { opacity: 0.8; }
 
-/* ----- Lista Principal de Módulos ----- */
+/*Lista Principal de Módulos*/
 .trilha-list { margin-top: 2rem; }
 .modulo-item {
     background-color: var(--cor-primaria);
@@ -88,7 +88,7 @@ h1, h2 {
     margin-left: 10px;
 }
 
-/* ----- ESTILOS FALTANTES PARA AULAS E QUESTÕES ----- */
+/* Estilos para Listas Aninhadas (Aulas e Questões dentro de Módulos) */
 .sub-list {
     border-top: 1px dashed #475569;
     margin-top: 1.5rem;
@@ -119,10 +119,10 @@ h1, h2 {
     padding: 5px 10px;
     margin-top: 10px;
 }
-/* ----- FIM DOS ESTILOS FALTANTES ----- */
 
 
-/* ----- Formulários ----- */
+
+/* Estilos de Formulários*/
 form {
     background-color: var(--cor-primaria);
     padding: 2rem;
@@ -156,7 +156,7 @@ form {
     gap: 1rem;
     margin-top: 1.5rem;
 }
-
+/* alternativas de questões */
 .option-group {
     display: flex;
     align-items: center;
@@ -186,7 +186,7 @@ form {
 .btn-secondary {
     background-color: #30363d;
 }
-
+/* Barra de ação principal */
 .main-action-bar {
     margin-bottom: 2rem;
     padding-bottom: 2rem;
