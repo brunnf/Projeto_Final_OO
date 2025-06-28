@@ -1,12 +1,12 @@
-/* Importando a fonte padrão */
+/* Importa a fonte principal */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
-/* ----- Variáveis de Cor (do tema principal) ----- */
+/*Cores do Tema da Trilha*/
 :root {
     --cor-fundo: #0D1117;
     --cor-primaria: #161B22;
-    --cor-acento: #38BDF8; /* Azul para "desbloqueado" */
-    --cor-sucesso: #4ade80; /* Verde para "completo" */
+    --cor-acento: #38BDF8; /* Azul para desbloqueado */
+    --cor-sucesso: #4ade80; /* Verde para completo */
     --cor-bloqueado: #475569;
     --cor-texto: #E2E8F0;
     --cor-texto-escuro: #0D1117;
@@ -24,7 +24,7 @@ body {
     color: var(--cor-texto);
 }
 
-/* Cabeçalho Fixo da Trilha */
+/* Cabeçalho da página da trilha */
 .track-header {
     background-color: var(--cor-primaria);
     padding: 1.5rem 2rem;
@@ -34,7 +34,7 @@ body {
     top: 0;
     z-index: 100;
 }
-
+/* Botão de voltar */
 .back-button {
     position: absolute;
     top: 50%;
@@ -77,7 +77,7 @@ body {
     padding: 4rem 1rem;
 }
 
-/* Estilo Base dos Nós (círculos) */
+/* Estilo base dos nós*/
 .path-node {
     border-radius: 50%;
     display: flex;
@@ -97,7 +97,7 @@ body {
 
 .path-node .icon { font-size: 2.5rem; }
 
-/* Tipos de Nós: Módulo vs Questão */
+/*Módulo e Questão */
 .path-node.module {
     width: 160px;
     height: 160px;
@@ -114,7 +114,7 @@ body {
 }
 .path-node.question .icon { font-size: 2rem; }
 .path-node.question span { font-weight: bold; }
-
+/* Agrupamento de questões*/
 .question-group {
     display: flex;
     gap: 3rem;
@@ -130,16 +130,16 @@ body {
     margin: 1rem 0;
 }
 
-/* ----- LÓGICA DE GAMIFICAÇÃO (CORES E ESTADOS) ----- */
+/*LÓGICA DE GAMIFICAÇÃO*/
 
-/* Estado: COMPLETO */
+/*COMPLETO*/
 .completed {
     background-color: var(--cor-sucesso);
     border-color: var(--cor-sucesso);
     color: var(--cor-texto-escuro);
 }
 
-/* Estado: DESBLOQUEADO (Atual) */
+/*DESBLOQUEADO */
 .unlocked {
     background-color: var(--cor-primaria);
     border-color: var(--cor-acento);
@@ -154,13 +154,13 @@ body {
     100% { transform: scale(1); }
 }
 
-/* Estado: BLOQUEADO */
+/*BLOQUEADO */
 .locked {
     background-color: var(--cor-primaria);
     border-color: var(--cor-bloqueado);
     color: var(--cor-bloqueado);
     cursor: not-allowed;
-    filter: saturate(0.5);
+    filter: saturate(0.5); /* Desatura a cor */
 }
 .locked:hover {
     transform: scale(1); /* Remove o efeito de hover */

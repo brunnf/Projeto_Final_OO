@@ -1,20 +1,16 @@
 import json
 
 class TrilhaModel:
-    """
-    Esta classe agora gerencia os dados da trilha lendo e escrevendo
-    em um arquivo JSON, em vez de guardá-los na memória.
-    """
-    def __init__(self, db_path='app/dados/trilha.json'): # <-- A MUDANÇA ESTÁ AQUI
-        """
-        O construtor agora aponta para o novo caminho do arquivo JSON.
-        """
+    # Gerencia os dados da trilha (módulos, aulas, questões)
+    
+    def __init__(self, db_path='app/dados/trilha.json'): 
+        # Define o caminho do arquivo de dados.
         self.db_path = db_path
 
-    # --- Métodos Auxiliares para ler e salvar o JSON ---
+    #Funções para ler e salvar o JSON
 
     def _ler_dados(self):
-        """Lê todo o conteúdo do arquivo JSON e o retorna."""
+        # Lê tudo do arquivo JSON. Se não existir, retorna uma estrutura vazia.
         try:
             with open(self.db_path, 'r', encoding='utf-8') as f:
                 return json.load(f)
@@ -22,27 +18,28 @@ class TrilhaModel:
             return {"proximo_id_modulo": 1, "proximo_id_aula": 1, "proximo_id_questao": 1, "modulos": []}
 
     def _salvar_dados(self, dados):
-        """Recebe um dicionário de dados e o salva no arquivo JSON."""
+        # Escreve os dados de volta no arquivo JSON.
         with open(self.db_path, 'w', encoding='utf-8') as f:
             json.dump(dados, f, indent=4, ensure_ascii=False)
 
-    #
-    # ... O RESTO DO CÓDIGO DO ARQUIVO CONTINUA EXATAMENTE O MESMO ...
-    #
-    
-    # ======================================================
-    # --- MÉTODOS DE MÓDULO (Agora operam no arquivo) ---
-    # ======================================================
-
+    # --- CRUD ---
+    # --- MÉTODOS DE MÓDULO ---
+        
     def get_all_modulos(self):
+        # Retorna todos os módulos.
+
         dados = self._ler_dados()
         return dados.get('modulos', [])
 
     def get_modulo_by_id(self, mod_id):
+        # Busca e retorna um módulo pelo ID.
+
         dados = self._ler_dados()
         return next((m for m in dados['modulos'] if m['id'] == mod_id), None)
 
     def create_modulo(self, titulo, descricao):
+        # Cria um novo módulo e salva.
+
         dados = self._ler_dados()
         novo_modulo = {
             "id": dados['proximo_id_modulo'], "titulo": titulo, "descricao": descricao,
@@ -54,6 +51,8 @@ class TrilhaModel:
         return novo_modulo
 
     def update_modulo(self, mod_id, titulo, descricao):
+        # Atualiza um módulo existente pelo ID e salva.
+
         dados = self._ler_dados()
         modulo = next((m for m in dados['modulos'] if m['id'] == mod_id), None)
         if modulo:
@@ -64,6 +63,7 @@ class TrilhaModel:
         return False
 
     def delete_modulo(self, mod_id):
+        # Apaga um módulo pelo ID e salva.
         dados = self._ler_dados()
         initial_len = len(dados['modulos'])
         dados['modulos'] = [m for m in dados['modulos'] if m['id'] != mod_id]
@@ -72,11 +72,11 @@ class TrilhaModel:
             return True
         return False
 
-    # ======================================================
-    # --- MÉTODOS DE AULA (Agora operam no arquivo) ---
-    # ======================================================
+    # --- MÉTODOS DE AULA ---
 
     def get_aula_by_id(self, aula_id):
+        # Busca e retorna uma aula pelo ID, junto com seu módulo pai.
+
         dados = self._ler_dados()
         for modulo in dados.get('modulos', []):
             for aula in modulo.get('aulas', []):
@@ -85,6 +85,8 @@ class TrilhaModel:
         return None, None
 
     def create_aula(self, mod_id, titulo, conteudo):
+        # Cria uma nova aula dentro de um módulo e salva.
+
         dados = self._ler_dados()
         modulo = next((m for m in dados['modulos'] if m['id'] == mod_id), None)
         if not modulo: return None
@@ -96,6 +98,7 @@ class TrilhaModel:
         return nova_aula
 
     def update_aula(self, aula_id, titulo, conteudo):
+        # Atualiza uma aula existente pelo ID e salva.
         dados = self._ler_dados()
         for modulo in dados.get('modulos', []):
             for aula in modulo.get('aulas', []):
@@ -107,6 +110,8 @@ class TrilhaModel:
         return False
 
     def delete_aula(self, mod_id, aula_id):
+        # Apaga uma aula de um módulo específico e salva.
+
         dados = self._ler_dados()
         modulo = next((m for m in dados['modulos'] if m['id'] == mod_id), None)
         if modulo:
@@ -117,11 +122,12 @@ class TrilhaModel:
                 return True
         return False
 
-    # ======================================================
-    # --- MÉTODOS DE QUESTÃO (Agora operam no arquivo) ---
-    # ======================================================
+    
+    # --- MÉTODOS DE QUESTÃO ---
+    
 
     def get_questao_by_id(self, questao_id):
+        # Busca e retorna uma questão pelo ID, junto com seu módulo pai.
         dados = self._ler_dados()
         for modulo in dados.get('modulos', []):
             for questao in modulo.get('questoes', []):
@@ -130,6 +136,7 @@ class TrilhaModel:
         return None, None
 
     def create_questao(self, mod_id, enunciado, opcoes, resposta_correta):
+        # Cria uma nova questão dentro de um módulo e salva.
         dados = self._ler_dados()
         modulo = next((m for m in dados['modulos'] if m['id'] == mod_id), None)
         if not modulo: return None
@@ -144,6 +151,7 @@ class TrilhaModel:
         return nova_questao
 
     def update_questao(self, questao_id, enunciado, opcoes, resposta_correta):
+        # Atualiza uma questão existente pelo ID e salva.
         dados = self._ler_dados()
         for modulo in dados.get('modulos', []):
             for questao in modulo.get('questoes', []):
@@ -156,6 +164,7 @@ class TrilhaModel:
         return False
 
     def delete_questao(self, mod_id, questao_id):
+        # Apaga uma questão de um módulo específico e salva.
         dados = self._ler_dados()
         modulo = next((m for m in dados['modulos'] if m['id'] == mod_id), None)
         if modulo:

@@ -1,7 +1,7 @@
-/* Importando a fonte padrão */
+/* Importando a fonte primcipal */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
-/* ----- Variáveis de Cor (do tema principal) ----- */
+/*  Cores do Tema da Página de Cursos */
 :root {
     --cor-fundo: #0D1117;
     --cor-primaria: #161B22;
