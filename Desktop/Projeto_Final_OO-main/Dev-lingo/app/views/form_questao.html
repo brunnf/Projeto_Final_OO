@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Questão</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Adicionar Nova Questão ao "{{modulo['titulo']}}"</h1>
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="enunciado">Enunciado da Questão</label>
+                <textarea id="enunciado" name="enunciado" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Opções de Resposta</label>
+                <input type="text" name="opcao_1" class="option-input" placeholder="Opção 1 (ex: x = 5)" required>
+                <input type="text" name="opcao_2" class="option-input" placeholder="Opção 2 (ex: var x = 5)" required>
+                <input type="text" name="opcao_3" class="option-input" placeholder="Opção 3 (ex: int x = 5)" required>
+                <input type="text" name="opcao_4" class="option-input" placeholder="Opção 4 (opcional)">
+            </div>
+            
+            <div class="form-group">
+                <label for="resposta_correta_index">Qual opção é a correta?</label>
+                <select name="resposta_correta_index" id="resposta_correta_index" class="option-input">
+                    <option value="0">Opção 1</option>
+                    <option value="1">Opção 2</option>
+                    <option value="2">Opção 3</option>
+                    <option value="3">Opção 4</option>
+                </select>
+            </div>
+            
+            <div class="form-actions">
+                <a href="/admin/trilha" class="btn btn-cancel">Cancelar</a>
+                <button type="submit" class="btn btn-create">Salvar Questão</button>
+            </div>
+        </form>
+        
+    </div>
+</body>
+</html>

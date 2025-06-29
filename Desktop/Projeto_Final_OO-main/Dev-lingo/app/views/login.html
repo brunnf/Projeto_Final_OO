@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - BITLINGO</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
+
+    <div class="main-login">
+        <div class="login-container">
+            <a href="/" class="logo">BITLINGO</a>
+            <h2>Acesse sua conta</h2>
+            
+            <% if error: %>
+                <p class="error-message">${error}</p>
+            <% end %>
+
+            <form method="POST">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" placeholder="Sua senha" required>
+                </div>
+
+                <div class="options-group">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Lembrar de mim</label>
+                    </div>
+                    <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                </div>
+
+                <button type="submit" class="btn-submit">Entrar</button>
+            </form>
+
+            <p class="signup-link">
+                Não tem uma conta? <a href="/cadastro">Cadastre-se</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+/* Importando a fonte principal */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+
+/* Cores do Tema Admin */
+:root {
+    --cor-fundo: #0D1117;
+    --cor-primaria: #161B22;
+    --cor-acento: #38BDF8;
+    --cor-sucesso: #4ade80;
+    --cor-perigo: #f472b6;
+    --cor-texto: #E2E8F0;
+    --cor-texto-escuro: #0D1117;
+}
+
+/*  Estilos Gerais */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    margin: 0;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    color: var(--cor-acento);
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/*Cabeçalho do Painel*/
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-header h1 {
+    margin: 0;
+    border: none;
+}
+
+/* Botões*/
+.btn {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: opacity 0.3s;
+    display: inline-block;
+}
+
+.btn-create { background-color: var(--cor-sucesso); }
+.btn-edit { background-color: var(--cor-acento); }
+.btn-delete { background-color: var(--cor-perigo); }
+.btn-cancel { background-color: #64748b; }
+.btn-logout { background-color: #64748b; }
+.btn:hover { opacity: 0.8; }
+
+/*Lista Principal de Módulos*/
+.trilha-list { margin-top: 2rem; }
+.modulo-item {
+    background-color: var(--cor-primaria);
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.modulo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modulo-header h2 {
+    margin: 0;
+    border: none;
+}
+
+.actions a {
+    margin-left: 10px;
+}
+
+/* Estilos para Listas Aninhadas (Aulas e Questões dentro de Módulos) */
+.sub-list {
+    border-top: 1px dashed #475569;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+}
+
+.sub-list h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--cor-texto);
+}
+
+.sub-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--cor-fundo);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.btn-add {
+    background-color: rgba(56, 189, 248, 0.2);
+    border: 1px solid var(--cor-acento);
+    color: var(--cor-acento);
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+
+
+
+/* Estilos de Formulários*/
+form {
+    background-color: var(--cor-primaria);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--cor-fundo);
+    border: 1px solid #30363d;
+    color: var(--cor-texto);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+/* alternativas de questões */
+.option-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.option-group input[type="radio"] {
+    flex-shrink: 0;
+}
+
+.option-group input[type="text"] {
+    flex-grow: 1;
+}
+
+.option-input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-secondary {
+    background-color: #30363d;
+}
+/* Barra de ação principal */
+.main-action-bar {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #30363d;
+    text-align: right;
+}
+
+.main-action-bar .btn-create {
+    font-size: 1.1rem;
+    padding: 12px 20px;
+}
+
+.empty-state {
+    color: #94a3b8;
+    font-style: italic;
+    padding: 10px;
+    background-color: var(--cor-fundo);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.sub-list-manager {
+    background-color: var(--cor-primaria);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.sub-list-manager h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.sub-item .actions .btn-small {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+}

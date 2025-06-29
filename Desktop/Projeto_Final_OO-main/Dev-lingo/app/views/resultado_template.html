@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado - BITLINGO</title>
+    <link rel="stylesheet" href="/static/css/aula.css"> </head>
+<body>
+    <div class="container" style="text-align: center; padding-top: 5rem;">
+        
+        <% if acertou: %>
+            <h1 style="color: #4ade80;">Parabéns, você acertou! ✅</h1>
+            <p>Vamos para o próximo desafio?</p>
+        <% else: %>
+            <h1 style="color: #f472b6;">Resposta Incorreta. ❌</h1>
+            <p>Não desista! Tente rever a aula e responder novamente.</p>
+        <% end %>
+
+        <br>
+        <a href="/trilha/python" class="btn-next" style="display: inline-block;">Voltar para a Trilha</a>
+    </div>
+</body>
+</html>
