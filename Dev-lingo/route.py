@@ -42,6 +42,10 @@ def cadastro_route(): return ctl.cadastro()
 def em_construcao_route():
     return ctl.em_construcao()
 
+@app.route('/modulo/<mod_id:int>')
+def ver_modulo_route(mod_id):
+    return ctl.ver_modulo(mod_id)
+
 #ROTAS INTERATIVAS (AULAS E QUESTÕES)
 
 @app.route('/aula/<aula_id:int>')
@@ -119,6 +123,22 @@ def editar_aula_route(mod_id, aula_id):
 @admin_required
 def editar_questao_route(mod_id, questao_id):
     return ctl.gerenciar_questao(mod_id, questao_id)
+
+@app.route('/admin/users')
+@admin_required
+def admin_users_route():
+    return ctl.admin_users_index()
+
+@app.route('/admin/user/apagar/<user_id:int>')
+@admin_required
+def apagar_usuario_route(user_id):
+    return ctl.apagar_usuario(user_id)
+
+@app.route('/cadastro', method=['GET', 'POST'])
+def handle_cadastro_route():
+    if request.method == 'POST':
+        return ctl.handle_cadastro()
+    return ctl.cadastro()
 
 #Iniciar Servidor
 if __name__ == '__main__':

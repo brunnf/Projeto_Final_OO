@@ -3,54 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Trilha Python - BITLINGO</title>
-    <link rel="stylesheet" href="/static/css/trilha.css">
+    <link rel="stylesheet" href="/static/css/trilha.css?v=1.0">
 </head>
 <body>
-    <header class="track-header">
-        <a href="/cursos" class="back-button">← Voltar para Cursos</a>
-        <h1>Trilha de Python</h1>
-        <div class="progress-container">
-            <span class="progress-label">Seu Progresso</span>
-            <div class="progress-bar-outline">
-                <div class="progress-bar-fill" style="width: 25%;"></div>
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="/cursos" class="header-icon" title="Voltar aos Cursos">🏠</a>
+            <div class="user-info">
+                <% if session: %>
+                    <span class="avatar"></span>
+                    <span>{{session.get('email', 'Usuário')}}</span>
+                    <a href="/logout" class="header-icon" title="Sair">→</a>
+                <% else: %>
+                    <a href="/login" class="login-button-small">Login</a>
+                <% end %>
             </div>
         </div>
     </header>
 
-    <main class="track-path">
-        <% for modulo in trilha: %>
-            <div class="path-node module unlocked">
-                <span class="icon">📖</span>
-                <div class="node-info">
-                    <strong>{{modulo['titulo']}}</strong>
-                </div>
-            </div>
-            <div class="path-connector"></div>
-            
-            <% if modulo['aulas']: %>
-            <div class="question-group">
-                <% for aula in modulo['aulas']: %>
-                    <a href="/aula/{{aula['id']}}" class="path-node question unlocked">
-                        <span class="icon">📄</span>
-                        <span>Aula {{modulo['aulas'].index(aula) + 1}}</span>
-                    </a>
-                <% end %>
-            </div>
-            <div class="path-connector"></div>
+    <main class="container">
+        <div class="track-header-main">
+            <h1>Módulos de Python</h1>
+            <p>Selecione um módulo para começar seus estudos.</p>
+        </div>
+        <div class="module-list-cards">
+            <% for modulo in trilha: %>
+            <a href="/modulo/{{modulo['id']}}" class="module-card">
+                <h2>{{modulo['titulo']}}</h2>
+                <p>{{modulo['descricao']}}</p>
+                <span class="card-go">Ver Módulo →</span>
+            </a>
             <% end %>
-            
-            <% if modulo['questoes']: %>
-            <div class="question-group">
-                <% for questao in modulo['questoes']: %>
-                    <a href="/questao/{{questao['id']}}" class="path-node question unlocked">
-                        <span class="icon">🧠</span>
-                        <span>Questão {{modulo['questoes'].index(questao) + 1}}</span>
-                    </a>
-                <% end %>
-            </div>
-            <div class="path-connector"></div>
-            <% end %>
-        <% end %>
+        </div>
     </main>
 </body>
 </html>

@@ -21,7 +21,16 @@
             </nav>
             
             <div class="actions-area">
-                <a href="/login" class="login-button">Login</a>
+                <% if session: %>
+                    <div class="user-info">
+                        <span class="avatar"></span>
+                        <span>{{session.get('email')}}</span>
+                        <a href="/logout" class="header-icon" title="Sair">→</a>
+                    </div>
+                <% else: %>
+                    <a href="/login" class="login-button">Login</a>
+                <% end %>
+
                 <button class="hamburger-menu" aria-label="Menu de opções">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -35,7 +44,7 @@
         <section class="hero">
             <div class="hero-content">
                 <h2 id="typing-effect"></h2>
-                <a href="#" class="cta-button">Começar</a>
+                <a href="/cursos" class="cta-button">Começar</a>
             </div>
         </section>
 

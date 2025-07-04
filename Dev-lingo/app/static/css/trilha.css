@@ -1,168 +1,66 @@
-/* Importa a fonte principal */
+/* Importando a fonte padrão */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
-/*Cores do Tema da Trilha*/
+/* ----- Variáveis de Cor (do tema original do site) ----- */
 :root {
     --cor-fundo: #0D1117;
     --cor-primaria: #161B22;
-    --cor-acento: #38BDF8; /* Azul para desbloqueado */
-    --cor-sucesso: #4ade80; /* Verde para completo */
-    --cor-bloqueado: #475569;
+    --cor-acento: #38BDF8;
     --cor-texto: #E2E8F0;
-    --cor-texto-escuro: #0D1117;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    --cor-texto-secundario: #a0aec0;
+    --cor-borda-sutil: #30363d;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
+    margin: 0;
 }
 
-/* Cabeçalho da página da trilha */
-.track-header {
-    background-color: var(--cor-primaria);
-    padding: 1.5rem 2rem;
-    text-align: center;
-    border-bottom: 1px solid #30363d;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-/* Botão de voltar */
-.back-button {
-    position: absolute;
-    top: 50%;
-    left: 2rem;
-    transform: translateY(-50%);
-    color: var(--cor-texto);
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s;
-}
-.back-button:hover { color: var(--cor-acento); }
-
-.track-header h1 { font-size: 2rem; }
-
-/* Barra de Progresso */
-.progress-container {
-    width: 60%;
-    max-width: 500px;
-    margin: 1rem auto 0 auto;
-}
-.progress-label { font-size: 0.9rem; margin-bottom: 0.5rem; display: block; }
-.progress-bar-outline {
-    background-color: var(--cor-fundo);
-    border-radius: 20px;
-    height: 20px;
-    padding: 4px;
-}
-.progress-bar-fill {
-    background-color: var(--cor-sucesso);
-    height: 100%;
-    border-radius: 16px;
-    transition: width 0.5s ease-in-out;
+.container {
+    width: 90%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
-/* O Caminho/Trilha */
-.track-path {
+/* Cabeçalho do Site */
+.site-header {
+    background-color: rgba(22, 27, 34, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--cor-borda-sutil);
+    padding: 1rem 0;
+}
+.header-container { display: flex; justify-content: space-between; align-items: center; }
+.header-icon { font-size: 1.5rem; text-decoration: none; color: var(--cor-texto-secundario); transition: color 0.3s; }
+.header-icon:hover { color: var(--cor-texto); }
+.user-info { display: flex; align-items: center; gap: 1rem; }
+.avatar { display: block; width: 32px; height: 32px; background-color: var(--cor-acento); border-radius: 50%; }
+.login-button-small { font-size: 0.9rem; padding: 0.4rem 0.8rem; border: 1px solid var(--cor-acento); color: var(--cor-acento); border-radius: 6px; text-decoration: none; }
+
+/* Cabeçalho da Página da Trilha */
+.track-header-main { text-align: center; padding: 3rem 1rem 4rem 1rem; }
+.track-header-main h1 { font-size: 2.8rem; margin: 0 0 0.5rem 0; color: #fff; }
+.track-header-main p { font-size: 1.1rem; color: var(--cor-texto-secundario); max-width: 600px; margin: 0 auto; }
+
+/* Lista de Cards dos Módulos */
+.module-list-cards { display: grid; gap: 1.5rem; padding-bottom: 4rem; }
+.module-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 4rem 1rem;
-}
-
-/* Estilo base dos nós*/
-.path-node {
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    background-color: var(--cor-primaria);
+    border: 1px solid var(--cor-borda-sutil);
+    padding: 2rem;
+    border-radius: 8px;
     text-decoration: none;
     color: var(--cor-texto);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
-.path-node:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-}
-
-.path-node .icon { font-size: 2.5rem; }
-
-/*Módulo e Questão */
-.path-node.module {
-    width: 160px;
-    height: 160px;
-    border: 4px solid;
-}
-.path-node.module .node-info strong { font-size: 1.2rem; display: block; }
-.path-node.module .node-info span { font-size: 0.9rem; }
-
-
-.path-node.question {
-    width: 90px;
-    height: 90px;
-    border: 3px solid;
-}
-.path-node.question .icon { font-size: 2rem; }
-.path-node.question span { font-weight: bold; }
-/* Agrupamento de questões*/
-.question-group {
-    display: flex;
-    gap: 3rem;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Conector entre os nós */
-.path-connector {
-    width: 6px;
-    height: 60px;
-    background: linear-gradient(var(--cor-bloqueado), var(--cor-bloqueado));
-    margin: 1rem 0;
-}
-
-/*LÓGICA DE GAMIFICAÇÃO*/
-
-/*COMPLETO*/
-.completed {
-    background-color: var(--cor-sucesso);
-    border-color: var(--cor-sucesso);
-    color: var(--cor-texto-escuro);
-}
-
-/*DESBLOQUEADO */
-.unlocked {
-    background-color: var(--cor-primaria);
+.module-card:hover {
+    transform: translateY(-5px);
     border-color: var(--cor-acento);
-    cursor: pointer;
 }
-.unlocked .icon {
-    animation: pulse 2s infinite;
-}
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-/*BLOQUEADO */
-.locked {
-    background-color: var(--cor-primaria);
-    border-color: var(--cor-bloqueado);
-    color: var(--cor-bloqueado);
-    cursor: not-allowed;
-    filter: saturate(0.5); /* Desatura a cor */
-}
-.locked:hover {
-    transform: scale(1); /* Remove o efeito de hover */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
+.module-card h2 { font-size: 1.5rem; margin-top: 0; margin-bottom: 0.5rem; color: var(--cor-texto); }
+.module-card p { color: var(--cor-texto-secundario); flex-grow: 1; margin-bottom: 1.5rem; }
+.card-go { font-weight: bold; color: var(--cor-acento); align-self: flex-start; }

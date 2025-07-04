@@ -1,0 +1,25 @@
+{
+    "proximo_id_usuario": 5,
+    "usuarios": [
+        {
+            "id": 1,
+            "nome": "Administrador",
+            "email": "admin@bitlingo.com",
+            "senha": "admin123",
+            "role": "admin"
+        },
+        {
+            "id": 2,
+            "nome": "Aluno Teste",
+            "email": "aluno@bitlingo.com",
+            "senha": "aluno123",
+            "role": "user",
+            "progresso": {
+                "aulas_concluidas": [
+                    109
+                ],
+                "questoes_concluidas": []
+            }
+        }
+    ]
+}
