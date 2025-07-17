@@ -1,0 +1,59 @@
+<%
+  # Define que esta página também usará o 'admin_base.html' como layout
+  rebase('app/views/admin_base.html', title='Gerenciar Trilha')
+%>
+
+<div class="main-action-bar">
+    <a href="/admin/modulo/novo" class="btn btn-create">+ Criar Novo Módulo</a>
+</div>
+
+<div class="trilha-list">
+    <% for modulo in trilha: %>
+    <div class="modulo-item">
+        <div class="modulo-header">
+            <h2>#{{modulo['id']}} - {{modulo['titulo']}}</h2>
+            <div class="actions">
+                <a href="/admin/modulo/editar/{{modulo['id']}}" class="btn btn-edit">Gerenciar Módulo</a>
+                <a href="/admin/modulo/apagar/{{modulo['id']}}" onclick="return confirm('Tem certeza? Isso apagará todas as aulas e questões dentro dele.')" class="btn btn-delete">Apagar</a>
+            </div>
+        </div>
+        <p>{{modulo['descricao']}}</p>
+
+        <div class="sub-list">
+            <h4>Aulas ({{len(modulo.get('aulas', []))}})</h4>
+            <% if not modulo.get('aulas', []): %>
+                <p class="empty-state">Nenhuma aula adicionada.</p>
+            <% else: %>
+                <% for aula in modulo['aulas']: %>
+                    <div class="sub-item">
+                        <span>{{aula['titulo']}}</span>
+                        <div class="actions">
+                             <a href="/admin/modulo/{{modulo['id']}}/aula/editar/{{aula['id']}}" class="btn btn-edit btn-small">Editar</a>
+                             <a href="/admin/modulo/{{modulo['id']}}/aula/apagar/{{aula['id']}}" class="btn btn-delete btn-small" onclick="return confirm('Apagar esta aula?')">Apagar</a>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+            <a href="/admin/modulo/{{modulo['id']}}/aula/novo" class="btn btn-add">+ Adicionar Aula</a>
+        </div>
+
+        <div class="sub-list">
+            <h4>Questões ({{len(modulo.get('questoes', []))}})</h4>
+             <% if not modulo.get('questoes', []): %>
+                <p class="empty-state">Nenhuma questão adicionada.</p>
+            <% else: %>
+                <% for questao in modulo['questoes']: %>
+                    <div class="sub-item">
+                        <span>{{questao['enunciado']}}</span>
+                         <div class="actions">
+                            <a href="/admin/modulo/{{modulo['id']}}/questao/editar/{{questao['id']}}" class="btn btn-edit btn-small">Editar</a>
+                            <a href="/admin/modulo/{{modulo['id']}}/questao/apagar/{{questao['id']}}" class="btn btn-delete btn-small" onclick="return confirm('Apagar esta questão?')">Apagar</a>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+            <a href="/admin/modulo/{{modulo['id']}}/questao/nova" class="btn btn-add">+ Adicionar Questão</a>
+        </div>
+    </div>
+    <% end %>
+</div>

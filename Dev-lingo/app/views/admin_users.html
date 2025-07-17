@@ -1,0 +1,38 @@
+<%
+  # Removemos a lógica do painel extra
+  rebase('app/views/admin_base.html', title='Gerenciar Usuários')
+%>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Status</th> <th>Role</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for user in users: %>
+            <tr data-user-email="{{user['email']}}">
+                <td>{{user['id']}}</td>
+                <td>{{user['nome']}}</td>
+                <td>{{user['email']}}</td>
+                <td class="status-cell">
+                    <span class="status-badge status-offline">Offline</span>
+                </td>
+                <td><span class="role-badge role-{{user['role']}}">{{user['role']}}</span></td>
+                <td class="actions-cell">
+                    <div class="actions">
+                        <% if user['id'] != 1: %>
+                        <a href="/admin/user/apagar/{{user['id']}}" class="btn btn-delete btn-small" onclick="return confirm('Tem certeza que deseja apagar este usuário?')">Apagar</a>
+                        <% end %>
+                        </div>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Trilha Python - BITLINGO</title>
+    <link rel="stylesheet" href="/static/css/trilha.css?v=1.0">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="/cursos" class="header-icon" title="Voltar aos Cursos">🏠</a>
+            <div class="user-info">
+                <% if session: %>
+                    <span class="avatar"></span>
+                    <span>{{session.get('email', 'Usuário')}}</span>
+                    <a href="/logout" class="header-icon" title="Sair">→</a>
+                <% else: %>
+                    <a href="/login" class="login-button-small">Login</a>
+                <% end %>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="track-header-main">
+            <h1>Módulos de Python</h1>
+            <p>Selecione um módulo para começar seus estudos.</p>
+        </div>
+        <div class="module-list-cards">
+            <% for modulo in trilha: %>
+            <a href="/modulo/{{modulo['id']}}" class="module-card">
+                <h2>{{modulo['titulo']}}</h2>
+                <p>{{modulo['descricao']}}</p>
+                <span class="card-go">Ver Módulo →</span>
+            </a>
+            <% end %>
+        </div>
+    </main>
+    <script>
+        // Ativa o script de conexão
+        const WS_ENABLED = true;
+
+        //  A função precisa existir, mas pode não fazer nada visualmente
+        function onWebSocketMessage(msg) {
+            // A mensagem chega, mas nenhuma ação visual é tomada na página.
+            // Você pode usar o console para depurar e confirmar que a conexão está ativa.
+            console.log("WebSocket message received in the background:", msg);
+        }
+    </script>
+
+    <script src="/static/js/websocket.js"></script>
+</body>
+</html>

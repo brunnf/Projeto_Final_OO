@@ -1,0 +1,162 @@
+/* Importa uma fonte do Google Fonts para o site */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+
+/*Cores e Configurações Básicas do Site*/
+:root {
+    --cor-fundo: #0D1117;
+    --cor-primaria: #161B22;
+    --cor-acento: #38BDF8;
+    --cor-texto: #E2E8F0;
+    --cor-texto-escuro: #0D1117;
+}
+/*Reseta margens e paddings de todos os elementos*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+/* Centraliza e limita a largura do conteúdo*/
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/*Cabeçalho*/
+.site-header {
+    background-color: var(--cor-primaria);
+    padding: 1rem 0;
+    border-bottom: 1px solid #30363d;
+    position: relative; /*posicionar o menu dropdown*/
+}
+
+.site-header .container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--cor-acento);
+}
+
+/*menu de navegação (Dropdown)*/
+.main-nav {
+    /* Posição e tamanho do menu quando aparece */
+    position: absolute;
+    top: 100%; /* Começa logo abaixo do cabeçalho */
+    left: 0;
+    width: 100%;
+    background-color: var(--cor-primaria);
+    border-bottom: 1px solid #30363d;
+    
+    /* Organiza links em coluna no menu */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+
+    /* Esconde o menu por padrão*/
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px); /* Efeito de deslizar para cima/baixo */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* Mostra o menu quando a classe 'active' é adicionada */
+.main-nav.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column; /* Links em coluna */
+    align-items: center;
+}
+
+.main-nav ul li {
+    margin: 1rem 0; /* Espaçamento entre os links */
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    color: var(--cor-acento);
+}
+
+/* Área de login e botão de hambúrguer */
+.actions-area {
+    margin-left: auto; /* Joga para a direita */
+    display: flex;
+    align-items: center;
+}
+/* Estilo do botão de login */
+.login-button {
+    text-decoration: none;
+    color: var(--cor-acento);
+    border: 1px solid var(--cor-acento);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: var(--cor-acento);
+    color: var(--cor-texto-escuro);
+}
+
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 20px;
+    z-index: 10; /* Fica por cima do menu */
+}
+
+.hamburger-menu .bar {
+    width: 2rem;
+    height: 0.25rem;
+    background-color: var(--cor-texto);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+}
+/* Animação do hambúrguer para 'X' quando ativo */
+.hamburger-menu.active .bar:nth-child(1) { transform: rotate(45deg) translate(0.65rem, 0.65rem); }
+.hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
+.hamburger-menu.active .bar:nth-child(3) { transform: rotate(-45deg) translate(0.65rem, -0.65rem); }
+
+
+/*Seções Hero, About e Rodapé*/
+.hero { height: 80vh; display: flex; justify-content: center; align-items: center; text-align: center; }
+.hero-content h2 { font-size: 4rem; font-weight: 900; line-height: 1.2; margin-bottom: 2rem; color: #FFFFFF; min-height: 160px; }
+#typing-effect::after { content: '|'; margin-left: 5px; opacity: 1; animation: blink 0.7s infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.cta-button { display: inline-block; background-color: var(--cor-acento); color: var(--cor-texto-escuro); padding: 1rem 2.5rem; font-size: 1.2rem; font-weight: 700; text-decoration: none; border-radius: 8px; transition: transform 0.3s ease; }
+.cta-button:hover { transform: translateY(-5px); }
+.about-section { padding: 6rem 0; background-color: var(--cor-primaria); }
+.about-section h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: var(--cor-acento); }
+.about-section p { font-size: 1.1rem; max-width: 800px; margin: 0 auto 1.5rem auto; text-align: center; }
+.site-footer-bottom { text-align: center; padding: 2rem 0; border-top: 1px solid #30363d; font-size: 0.9rem; color: #8892b0; }

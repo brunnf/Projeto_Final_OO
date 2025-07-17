@@ -1,0 +1,72 @@
+{
+    "proximo_id_usuario": 10,
+    "usuarios": [
+        {
+            "id": 1,
+            "nome": "Administrador",
+            "email": "admin@bitlingo.com",
+            "senha": "admin123",
+            "role": "admin",
+            "progresso": {
+                "aulas_concluidas": [
+                    109
+                ],
+                "questoes_concluidas": [],
+                "questaos_concluidas": [
+                    208,
+                    210
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "nome": "Aluno Teste",
+            "email": "aluno@bitlingo.com",
+            "senha": "aluno123",
+            "role": "user",
+            "progresso": {
+                "aulas_concluidas": [
+                    109
+                ],
+                "questoes_concluidas": []
+            }
+        },
+        {
+            "id": 7,
+            "nome": "bruno testes",
+            "email": "bruno@gmail.com",
+            "senha": "123456",
+            "role": "user",
+            "progresso": {
+                "aulas_concluidas": [],
+                "questoes_concluidas": [],
+                "questaos_concluidas": [
+                    208,
+                    211
+                ]
+            }
+        },
+        {
+            "id": 8,
+            "nome": "brunao da pika gigante",
+            "email": "brupika@gmail.com",
+            "senha": "123456",
+            "role": "user",
+            "progresso": {
+                "aulas_concluidas": [],
+                "questoes_concluidas": []
+            }
+        },
+        {
+            "id": 9,
+            "nome": "Bruno da PIKA IMENSA",
+            "email": "brupika2@gmail.com",
+            "senha": "123456",
+            "role": "user",
+            "progresso": {
+                "aulas_concluidas": [],
+                "questoes_concluidas": []
+            }
+        }
+    ]
+}

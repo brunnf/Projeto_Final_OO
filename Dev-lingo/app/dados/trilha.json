@@ -1,0 +1,79 @@
+{
+    "proximo_id_modulo": 8,
+    "proximo_id_aula": 112,
+    "proximo_id_questao": 213,
+    "modulos": [
+        {
+            "id": 1,
+            "titulo": "Módulo 1: Variáveis e Tipos",
+            "descricao": "Conceitos fundamentais de variáveis e tipos de dados em Python.",
+            "aulas": [
+                {
+                    "id": 109,
+                    "titulo": "O que é uma Variável?",
+                    "conteudo": "<h3>O que é uma Variável?</h3>\r\n<p>Imagine que você precisa guardar uma informação para usar depois, como o nome de um usuário ou a pontuação em um jogo. Em programação, usamos <strong>variáveis</strong> para isso. Pense em uma variável como uma <strong>caixa com uma etiqueta</strong>. Você coloca uma informação dentro da caixa e usa a etiqueta (o nome da variável) para encontrá-la sempre que precisar.</p>\r\n<p>Em Python, criar uma variável é extremamente simples. Você só precisa escolher um nome, usar o sinal de igual (<code>=</code>) e colocar o valor que deseja guardar.</p>\r\n<pre><code class=\"language-python\"><span class=\"code-comment\"># Criamos uma variável para guardar o nome do curso</span>\r\n<span class=\"code-variable\">nome_do_curso</span> = <span class=\"code-string\">\"BITLINGO\"</span>\r\n\r\n<span class=\"code-comment\"># E outra para guardar o ano</span>\r\n<span class=\"code-variable\">ano</span> = <span class=\"code-number\">2025</span>\r\n\r\n<span class=\"code-keyword\">print</span>(nome_do_curso, ano)</code></pre>\r\n\r\n<h4>Principais Tipos de Dados</h4>\r\n<p>Python automaticamente entende o tipo de informação que você guarda. Os mais importantes são:</p>\r\n<ul>\r\n    <li><strong>String (<code>str</code>):</strong> Para textos. Ex: <code>\"Olá, Mundo!\"</code></li>\r\n    <li><strong>Integer (<code>int</code>):</strong> Para números inteiros. Ex: <code>10</code>, <code>-50</code></li>\r\n    <li><strong>Float (<code>float</code>):</strong> Para números com casas decimais. Ex: <code>19.99</code></li>\r\n    <li><strong>Boolean (<code>bool</code>):</strong> Para valores lógicos, <code>True</code> ou <code>False</code>.</li>\r\n</ul>\r\n\r\n<div class=\"key-concept\">\r\n    <p><strong>Dica de Mestre: Tipagem Dinâmica</strong></p>\r\n    <p>Diferente de muitas linguagens, em Python você não precisa declarar o tipo de uma variável. Ele descobre o tipo sozinho! Você pode verificar o tipo de qualquer variável com a função <code>type()</code>.</p>\r\n    <pre><code class=\"language-python\"><span class=\"code-variable\">x</span> = <span class=\"code-number\">10</span>\r\n<span class=\"code-keyword\">print</span>(<span class=\"code-keyword\">type</span>(x))  <span class=\"code-comment\"># Saída: &lt;class 'int'&gt;</span></code></pre>\r\n</div>"
+                }
+            ],
+            "questoes": [
+                {
+                    "id": 208,
+                    "enunciado": "Qual dos nomes abaixo é INVÁLIDO para uma variável em Python?",
+                    "opcoes": [
+                        "minha_variavel",
+                        "valor_2",
+                        "_nome",
+                        "2nome"
+                    ],
+                    "resposta_correta": "2nome"
+                },
+                {
+                    "id": 209,
+                    "enunciado": "Após a execução do código 'resultado = 50 / 2', qual será o tipo de dado da variável 'resultado'?\r\n\r\n",
+                    "opcoes": [
+                        "int",
+                        "float",
+                        "str",
+                        "bool"
+                    ],
+                    "resposta_correta": "float"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "titulo": "Operadores e Expressões",
+            "descricao": "Aprenda a realizar cálculos, fazer comparações e combinar condições para criar programas mais inteligentes.",
+            "aulas": [
+                {
+                    "id": 110,
+                    "titulo": "Trabalhando com Operadores",
+                    "conteudo": "<h3>Os \"Verbos\" da Programação</h3>\r\n<p>Se as variáveis são os \"substantivos\" (as coisas), os <strong>operadores</strong> são os \"verbos\" (as ações). Eles são símbolos especiais que realizam operações em um ou mais valores. Vamos conhecer os três grupos principais.</p>\r\n\r\n<h4>1. Operadores Aritméticos</h4>\r\n<p>São os que você já conhece da matemática. Eles nos permitem fazer cálculos.</p>\r\n<pre><code class=\"language-python\"><span class=\"code-variable\">x</span> = <span class=\"code-number\">10</span>"
+                }
+            ],
+            "questoes": [
+                {
+                    "id": 210,
+                    "enunciado": "Qual é o resultado da expressão (15 % 4) * 2?",
+                    "opcoes": [
+                        "6",
+                        "7.5",
+                        "3",
+                        "1"
+                    ],
+                    "resposta_correta": "6"
+                },
+                {
+                    "id": 211,
+                    "enunciado": "Considere: idade = 25, vip = False. Qual o resultado de (idade > 18 or vip)?",
+                    "opcoes": [
+                        "True",
+                        "False",
+                        "25",
+                        "erro"
+                    ],
+                    "resposta_correta": "True"
+                }
+            ]
+        }
+    ]
+}

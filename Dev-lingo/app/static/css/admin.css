@@ -1,0 +1,210 @@
+/* Importando a fonte padrão */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+
+/* ----- Variáveis de Cor (do tema original do site) ----- */
+:root {
+    --cor-fundo: #0D1117;
+    --cor-primaria: #161B22;
+    --cor-acento: #38BDF8;
+    --cor-sucesso: #4ade80;
+    --cor-perigo: #f472b6;
+    --cor-texto: #E2E8F0;
+    --cor-texto-escuro: #0D1117;
+    --cor-borda-sutil: #30363d;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    margin: 0;
+}
+
+/* --- Layout Principal do Admin (Sidebar + Conteúdo) --- */
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Barra Lateral (Sidebar) */
+.admin-sidebar {
+    width: 260px;
+    background-color: var(--cor-primaria);
+    border-right: 1px solid var(--cor-borda-sutil);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    flex-shrink: 0; /* Impede que a sidebar encolha */
+}
+.sidebar-header {
+    text-align: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--cor-borda-sutil);
+}
+.sidebar-header .logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--cor-acento);
+    text-decoration: none;
+}
+.sidebar-header span {
+    color: #8892b0;
+    display: block;
+}
+
+/* Navegação do Admin */
+.admin-nav {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 1; /* Empurra o rodapé da sidebar para baixo */
+}
+.admin-nav a {
+    color: #a0aec0;
+    text-decoration: none;
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+.admin-nav a:hover {
+    background-color: #212c3d;
+    color: var(--cor-texto);
+}
+.admin-nav a.active {
+    background-color: var(--cor-acento);
+    color: var(--cor-texto-escuro);
+}
+
+.sidebar-footer a {
+    color: #a0aec0;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+}
+.sidebar-footer a:hover {
+    color: var(--cor-texto);
+}
+
+/* Conteúdo Principal do Admin */
+.admin-content {
+    flex-grow: 1;
+    padding: 2rem 3rem;
+    overflow-y: auto; /* Adiciona scroll se o conteúdo for muito grande */
+}
+.content-header {
+    margin-bottom: 2rem;
+}
+.content-header h1 {
+    color: #fff;
+    border: none;
+    padding: 0;
+    font-size: 2rem;
+}
+
+/* Estilos da Tabela de Usuários */
+.table-container {
+    background-color: var(--cor-primaria);
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda-sutil);
+    overflow: hidden;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--cor-borda-sutil);
+}
+thead {
+    background-color: #212c3d;
+}
+tbody tr:last-child td {
+    border-bottom: none;
+}
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+.role-badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.role-admin {
+    background-color: rgba(56, 189, 248, 0.2);
+    color: var(--cor-acento);
+}
+.role-user {
+    background-color: rgba(139, 148, 162, 0.2);
+    color: #8892b0;
+}
+
+/* --- Estilos para Botões e Ações --- */
+.actions { display: flex; gap: 0.5rem; justify-content: flex-end; }
+.btn, .btn-small { text-decoration: none; color: white; border-radius: 5px; font-weight: bold; transition: opacity 0.3s; padding: 10px 15px; border: none; cursor: pointer; }
+.btn-create { background-color: var(--cor-sucesso); }
+.btn-edit { background-color: var(--cor-acento); color: var(--cor-texto-escuro); }
+.btn-delete { background-color: var(--cor-perigo); }
+.btn-add { background-color: rgba(56, 189, 248, 0.2); border: 1px solid var(--cor-acento); color: var(--cor-acento); font-size: 0.9rem; padding: 5px 10px; }
+.btn-small { padding: 4px 8px; font-size: 0.8rem; }
+.btn:hover, .btn-small:hover { opacity: 0.8; }
+
+/* --- Estilos da Lista de Módulos --- */
+.main-action-bar { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--cor-borda-sutil); text-align: right; }
+.modulo-item { background-color: var(--cor-primaria); border: 1px solid var(--cor-borda-sutil); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+.modulo-header { display: flex; justify-content: space-between; align-items: center; }
+.modulo-header h2 { margin: 0; border: none; font-size: 1.5rem; }
+.modulo-item > p { color: #a0aec0; margin-top: 0.5rem; }
+.sub-list { border-top: 1px dashed #475569; margin-top: 1.5rem; padding-top: 1.5rem; }
+.sub-list h4 { margin-top: 0; margin-bottom: 1rem; color: var(--cor-texto); }
+.sub-item { display: flex; justify-content: space-between; align-items: center; background-color: var(--cor-fundo); padding: 10px; border-radius: 5px; margin-bottom: 10px; }
+.empty-state { color: #8892b0; font-style: italic; padding: 10px; background-color: var(--cor-fundo); border-radius: 5px; text-align: center; }
+
+/* --- Estilos de Formulários --- */
+form { background-color: var(--cor-primaria); padding: 2rem; border-radius: 8px; margin-top: 2rem; }
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+.form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px; background-color: var(--cor-fundo); border: 1px solid var(--cor-borda-sutil); color: var(--cor-texto); border-radius: 5px; font-size: 1rem; }
+.form-actions { display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem; }
+.btn-cancel { background-color: #64748b; }
+.option-input { display: block; width: 100%; margin-bottom: 10px; }
+
+/* --- Estilos para Status de Usuário na Tabela --- */
+.status-badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.status-badge::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-online {
+    color: var(--cor-sucesso);
+    background-color: rgba(74, 222, 128, 0.15);
+}
+.status-online::before {
+    background-color: var(--cor-sucesso);
+}
+
+.status-offline {
+    color: #8892b0;
+    background-color: rgba(139, 148, 162, 0.15);
+}
+.status-offline::before {
+    background-color: #8892b0;
+}

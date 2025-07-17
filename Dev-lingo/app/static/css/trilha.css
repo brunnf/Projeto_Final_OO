@@ -1,0 +1,66 @@
+/* Importando a fonte padrão */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+
+/* ----- Variáveis de Cor (do tema original do site) ----- */
+:root {
+    --cor-fundo: #0D1117;
+    --cor-primaria: #161B22;
+    --cor-acento: #38BDF8;
+    --cor-texto: #E2E8F0;
+    --cor-texto-secundario: #a0aec0;
+    --cor-borda-sutil: #30363d;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    margin: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Cabeçalho do Site */
+.site-header {
+    background-color: rgba(22, 27, 34, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--cor-borda-sutil);
+    padding: 1rem 0;
+}
+.header-container { display: flex; justify-content: space-between; align-items: center; }
+.header-icon { font-size: 1.5rem; text-decoration: none; color: var(--cor-texto-secundario); transition: color 0.3s; }
+.header-icon:hover { color: var(--cor-texto); }
+.user-info { display: flex; align-items: center; gap: 1rem; }
+.avatar { display: block; width: 32px; height: 32px; background-color: var(--cor-acento); border-radius: 50%; }
+.login-button-small { font-size: 0.9rem; padding: 0.4rem 0.8rem; border: 1px solid var(--cor-acento); color: var(--cor-acento); border-radius: 6px; text-decoration: none; }
+
+/* Cabeçalho da Página da Trilha */
+.track-header-main { text-align: center; padding: 3rem 1rem 4rem 1rem; }
+.track-header-main h1 { font-size: 2.8rem; margin: 0 0 0.5rem 0; color: #fff; }
+.track-header-main p { font-size: 1.1rem; color: var(--cor-texto-secundario); max-width: 600px; margin: 0 auto; }
+
+/* Lista de Cards dos Módulos */
+.module-list-cards { display: grid; gap: 1.5rem; padding-bottom: 4rem; }
+.module-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cor-primaria);
+    border: 1px solid var(--cor-borda-sutil);
+    padding: 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--cor-texto);
+    transition: all 0.3s ease;
+}
+.module-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--cor-acento);
+}
+.module-card h2 { font-size: 1.5rem; margin-top: 0; margin-bottom: 0.5rem; color: var(--cor-texto); }
+.module-card p { color: var(--cor-texto-secundario); flex-grow: 1; margin-bottom: 1.5rem; }
+.card-go { font-weight: bold; color: var(--cor-acento); align-self: flex-start; }

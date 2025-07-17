@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}} - Painel de Admin BITLINGO</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="/" class="logo">BITLINGO</a>
+                <span>Admin</span>
+            </div>
+            <nav class="admin-nav">
+                <a href="/admin/trilha" class="{{'active' if title == 'Gerenciar Trilha' else ''}}">Gerenciar Trilha</a>
+                <a href="/admin/users" class="{{'active' if title == 'Gerenciar Usuários' else ''}}">Gerenciar Usuários</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/logout">Sair</a>
+            </div>
+        </aside>
+
+        <main class="admin-content">
+            <header class="content-header">
+                <h1>{{title}}</h1>
+            </header>
+            <div class="content-body">
+                {{!extra_panel if defined('extra_panel') else ''}} {{!base}}
+            </div>
+        </main>
+    </div>
+    <script>
+        const WS_ENABLED = true;
+        
+        function onWebSocketMessage(msg) {
+            console.log("[WS] Mensagem recebida no painel admin:", msg);
+        }
+    </script>
+    <script src="/static/js/websocket.js"></script>
+</body>
+</html>
