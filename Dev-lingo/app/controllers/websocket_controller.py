@@ -8,10 +8,9 @@ client_info = {}
 connected_clients = set()
 
 def handle_ws(ws, secret):
-    """
-    Lida com conexões WebSocket, mensagens e desconexões.
-    Recebe o segredo da sessão como um parâmetro para evitar erros de escopo.
-    """
+    
+    # Lida com conexões WebSocket, mensagens e desconexões. Recebe o segredo da sessão como um parâmetro para evitar erros de escopo.
+    
     # Use o 'secret' passado como argumento para obter o cookie de forma segura
     import bottle
     session_data = bottle.request.get_cookie("session", secret=secret)
@@ -57,9 +56,9 @@ def handle_ws(ws, secret):
             enviar_lista_usuarios()
 
 def handle_force_disconnect(sender_ws, data):
-    """
-    Lida com uma solicitação de um administrador para desconectar outro usuário.
-    """
+    
+    # Lida com uma solicitação de um administrador para desconectar outro usuário.
+    
     sender_info = client_info.get(sender_ws)
     
     # SEGURANÇA: Verifica se o remetente é um administrador
@@ -98,9 +97,9 @@ def handle_force_disconnect(sender_ws, data):
 
 
 def enviar_lista_usuarios():
-    """
-    Envia a lista atualizada de usuários online para todos os clientes conectados.
-    """
+    
+    # Envia a lista atualizada de usuários online para todos os clientes conectados.
+    
     usuarios_online = [info["email"] for info in client_info.values()]
     roles_map = {info["email"]: info["role"] for info in client_info.values()}
     
